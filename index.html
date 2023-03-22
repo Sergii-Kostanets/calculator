@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    
+    <style>
+        
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: darkgray;
+            padding: 10px 0;
+        }
+        
+        .calculator{
+            margin: 0 auto;
+        }
+        
+        h2{
+            margin: 15px 0;
+            border-bottom: 2px;
+            border-bottom-style: solid;
+            border-bottom-color: black;
+            padding-bottom: 5px;
+        }
+        
+        label{
+            display: inline-block;
+            width: 350px;
+        }
+        
+        input{
+            display: inline-block;
+            width: 110px;
+            height: 25px;
+            background-color: #bdbdbd;
+            margin: 2px 0;
+            border: none;
+            outline: none;
+        }
+        
+        input:disabled{
+            background-color: darkgray;
+        }
+        
+        .input[type="float"],
+        .result,
+        .total{
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='16px' width='85px'><text x='2' y='13' fill='gray' font-size='12' font-family='arial'>€</text></svg>");
+            background-repeat: no-repeat;
+            background-position-x: 3px;
+            background-position-y: 4px;
+            padding-left: 15px;
+        }
+        
+        input[type="button"]{
+            display: block;
+            width: 70px;
+            height: 30px;
+            border-radius: 15px;
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #bdbdbd;
+        }
+        
+        input[type="button"]:hover{
+            background-color: #9e9e9e;
+        }
+        
+        input[type="button"]:active{
+            background-color: #707070;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        
+        <h2>Sitting Room</h2>
+        <label for="num1">Furniture (couches, shelves)</label>
+        <input type="float" class="input1 input" id="num1" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num2">Carpets, curtains and soft furnishings</label>
+        <input type="float" class="input1 input" id="num2" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num3">TV / DVD Player</label>
+        <input type="float" class="input1 input" id="num3" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num4">Wireless heating thermostat</label>
+        <input type="float" class="input1 input" id="num4" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num5">Hi-fi equipment/Stereos</label>
+        <input type="float" class="input1 input" id="num5" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num6">Mirror</label>
+        <input type="float" class="input1 input" id="num6" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Books</label>
+        <input type="float" class="input1 input" id="num7" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum">CDs / Vinyl</label>
+        <input type="float" class="input1 input" id="num8" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">DVDs / Videos</label>
+        <input type="float" class="input1 input" id="num9" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Electrical (lamps, clocks)</label>
+        <input type="float" class="input1 input" id="num10" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Silverware</label>
+        <input type="float" class="input1 input" id="num11" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Pictures and ornaments</label>
+        <input type="float" class="input1 input" id="num12" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Satellite receiver</label>
+        <input type="float" class="input1 input" id="num13" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num7">Other</label>
+        <input type="float" class="input1 input" id="num14" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum1"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum1" value="0" disabled>
+        <br>
+        <input type="button" value="Reset" onclick="reset1()">
+        
+        <h2>Dining Room</h2>
+        <label for="num15">Carpets, curtains and soft furnishings</label>
+        <input type="float" class="input2 input" id="num15" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num16">Dining (china, glasses, silverware)</label>
+        <input type="float" class="input2 input" id="num16" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num17">Furniture (table, chairs, sideboard, cabinet)</label>
+        <input type="float" class="input2 input" id="num17" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num18">Pictures and ornaments</label>
+        <input type="float" class="input2 input" id="num18" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num19">Electricals</label>
+        <input type="float" class="input2 input" id="num19" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num20">Lamps</label>
+        <input type="float" class="input2 input" id="num20" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num21">Linen</label>
+        <input type="float" class="input2 input" id="num21" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num22">Wine / spirits</label>
+        <input type="float" class="input2 input" id="num22" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num23">Other</label>
+        <input type="float" class="input2 input" id="num23" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum2"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum2" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset2()">
+        
+        <h2>Kitchen</h2>
+        <label for="num24">Carpets / Curtains (floor coverings, blinds)</label>
+        <input type="float" class="input3 input" id="num24" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num25">Dishwasher</label>
+        <input type="float" class="input3 input" id="num25" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num26">Washing machine / Tumble dryer</label>
+        <input type="float" class="input3 input" id="num26" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num27">Oven and cooker</label>
+        <input type="float" class="input3 input" id="num27" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num28">Large electrical (microwave, food processor)</label>
+        <input type="float" class="input3 input" id="num28" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num29">Pots, pans and utensils</label>
+        <input type="float" class="input3 input" id="num29" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num30">Cupboard contents</label>
+        <input type="float" class="input3 input" id="num30" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num31">Freezer contents</label>
+        <input type="float" class="input3 input" id="num31" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num32">Fridge/Freezer</label>
+        <input type="float" class="input3 input" id="num32" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num33">Small electrical (kettle, toaster)</label>
+        <input type="float" class="input3 input" id="num33" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num34">Crockery, cutlery and glassware</label>
+        <input type="float" class="input3 input" id="num34" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num35">Other</label>
+        <input type="float" class="input3 input" id="num35" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum3"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum3" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset3()">
+        
+        <h2>Bedroom(s)</h2>
+        <label for="num36">Bed(s)</label>
+        <input type="float" class="input4 input" id="num36" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num37">Furniture (bedside tables, chairs wardrobes)</label>
+        <input type="float" class="input4 input" id="num37" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num38">Bed linen (duvets, pillows, sheets)</label>
+        <input type="float" class="input4 input" id="num38" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num39">Carpets / floor coverings</label>
+        <input type="float" class="input4 input" id="num39" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num40">Shoes / clothes</label>
+        <input type="float" class="input4 input" id="num40" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num41">Curtains / blinds</label>
+        <input type="float" class="input4 input" id="num41" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num42">Electrical (TVs, Lamps, stereos, computer)</label>
+        <input type="float" class="input4 input" id="num42" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num43">Toys / Games</label>
+        <input type="float" class="input4 input" id="num43" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num44">Other</label>
+        <input type="float" class="input4 input" id="num44" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum4"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum4" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset4()">
+        
+        <h2>Bathroom</h2>
+        <label for="num45">Carpets / floor coverings</label>
+        <input type="float" class="input5 input" id="num45" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num46">Curtains / blinds</label>
+        <input type="float" class="input5 input" id="num46" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num47">Furniture (cabinets, mirrors)</label>
+        <input type="float" class="input5 input" id="num47" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num48">Electricals (shaver, hairdryer)</label>
+        <input type="float" class="input5 input" id="num48" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num49">Other</label>
+        <input type="float" class="input5 input" id="num49" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum5"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum5" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset5()">
+        
+        <h2>Extra Rooms</h2>
+        <label for="num50">Carpets / floor coverings</label>
+        <input type="float" class="input6 input" id="num50" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num51">Curtains / blinds</label>
+        <input type="float" class="input6 input" id="num51" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num52">Ironing Board/Iron</label>
+        <input type="float" class="input6 input" id="num52" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num53">Furniture</label>
+        <input type="float" class="input6 input" id="num53" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num53">Video doorbell</label>
+        <input type="float" class="input6 input" id="num53" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num54">Vacuum cleaner/other appliances</label>
+        <input type="float" class="input6 input" id="num54" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num56">Other</label>
+        <input type="float" class="input6 input" id="num56" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum6"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum6" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset6()">
+        
+        <h2>Garden/Garage/Shed</h2>
+        <label for="num57">Barbeque (portable)</label>
+        <input type="float" class="input7 input" id="num57" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num58">Camping Equipment</label>
+        <input type="float" class="input7 input" id="num58" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num59">Garden equipment (lawnmowers etc)</label>
+        <input type="float" class="input7 input" id="num59" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num60">Garden furniture (tables, benches)</label>
+        <input type="float" class="input7 input" id="num60" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num61">Ornaments (plant pots, statues etc)</label>
+        <input type="float" class="input7 input" id="num61" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num62">Play equipment (toys, swings)</label>
+        <input type="float" class="input7 input" id="num62" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num63">Sheds / greenhouse</label>
+        <input type="float" class="input7 input" id="num63" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num64">Tools</label>
+        <input type="float" class="input7 input" id="num64" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num65">Other</label>
+        <input type="float" class="input7 input" id="num65" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum7"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum7" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset7()">
+        
+        <h2>Other Valuable Items</h2>
+        <label for="num66">Laptops / tablets</label>
+        <input type="float" class="input8 input" id="num66" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num67">Bicycles /electric scooters</label>
+        <input type="float" class="input8 input" id="num67" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num68">Cameras / camcorders</label>
+        <input type="float" class="input8 input" id="num68" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num68">Suitcases/bags</label>
+        <input type="float" class="input8 input" id="num69" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num70">Jewellery/Watches</label>
+        <input type="float" class="input8 input" id="num70" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num71">Prams/ pushchairs / cots</label>
+        <input type="float" class="input8 input" id="num71" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num72">Luggage (including handbags)</label>
+        <input type="float" class="input8 input" id="num72" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num73">Mobile phone</label>
+        <input type="float" class="input8 input" id="num73" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num74">Musical instruments</label>
+        <input type="float" class="input8 input" id="num74" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num75">Photographic equipment</label>
+        <input type="float" class="input8 input" id="num75" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num76">Spectacles / Sunglasses</label>
+        <input type="float" class="input8 input" id="num76" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num77">Sports equipment (golf clubs)</label>
+        <input type="float" class="input8 input" id="num77" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num78">Air Conditioning & Fans (Portable)</label>
+        <input type="float" class="input8 input" id="num78" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num79">Video recording equipment</label>
+        <input type="float" class="input8 input" id="num79" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num80">Antiques</label>
+        <input type="float" class="input8 input" id="num80" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num81">Collections</label>
+        <input type="float" class="input8 input" id="num81" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num82">Ornaments</label>
+        <input type="float" class="input8 input" id="num82" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num83">Pictures / Paintings</label>
+        <input type="float" class="input8 input" id="num83" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="num84">Other</label>
+        <input type="float" class="input8 input" id="num84" placeholder="0" onfocusout="add()">
+        <br>
+        <label for="sum8"><strong>Sub Total</strong></label>
+        <input type="text" class="result" id="sum8" value="0" disabled>
+        <input type="button" value="Reset" onclick="reset8()">
+        
+        <!-- <h2>Total</h2> -->
+        <label for="total">Grand Total</label>
+        <input type="text" class="total" id="total" value="0" disabled>
+        <input type="button" value="Reset all" onclick="resetAll()">
+        <br>
+        
+    </div>
+    
+    <script type="text/javascript">
+        var inputs1 = document.getElementsByClassName("input1");
+        var inputs2 = document.getElementsByClassName("input2");
+        var inputs3 = document.getElementsByClassName("input3");
+        var inputs4 = document.getElementsByClassName("input4");
+        var inputs5 = document.getElementsByClassName("input5");
+        var inputs6 = document.getElementsByClassName("input6");
+        var inputs7 = document.getElementsByClassName("input7");
+        var inputs8 = document.getElementsByClassName("input8");
+        var results = document.getElementsByClassName("result");
+        
+        function add() {
+
+            let sum1 = 0
+            for (let i = 0; i < inputs1.length; i++) {
+                if (isNaN(inputs1[i].value)) {
+                    document.getElementById("sum1").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum1 += Number(inputs1[i].value);
+                }
+            }
+            document.getElementById("sum1").value = String(sum1);
+
+            let sum2 = 0
+            for (let i = 0; i < inputs2.length; i++) {
+                if (isNaN(inputs2[i].value)) {
+                    document.getElementById("sum2").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum2 += Number(inputs2[i].value);
+                }
+            }
+            document.getElementById("sum2").value = String(sum2);
+            
+            let sum3 = 0
+            for (let i = 0; i < inputs3.length; i++) {
+                if (isNaN(inputs3[i].value)) {
+                    document.getElementById("sum3").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum3 += Number(inputs3[i].value);
+                }
+            }
+            document.getElementById("sum3").value = String(sum3);
+            
+            let sum4 = 0
+            for (let i = 0; i < inputs4.length; i++) {
+                if (isNaN(inputs4[i].value)) {
+                    document.getElementById("sum4").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum4 += Number(inputs4[i].value);
+                }
+            }
+            document.getElementById("sum4").value = String(sum4);
+            
+            let sum5 = 0
+            for (let i = 0; i < inputs5.length; i++) {
+                if (isNaN(inputs5[i].value)) {
+                    document.getElementById("sum5").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum5 += Number(inputs5[i].value);
+                }
+            }
+            document.getElementById("sum5").value = String(sum5);
+            
+            let sum6 = 0
+            for (let i = 0; i < inputs6.length; i++) {
+                if (isNaN(inputs6[i].value)) {
+                    document.getElementById("sum6").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum6 += Number(inputs6[i].value);
+                }
+            }
+            document.getElementById("sum6").value = String(sum6);
+            
+            let sum7 = 0
+            for (let i = 0; i < inputs7.length; i++) {
+                if (isNaN(inputs7[i].value)) {
+                    document.getElementById("sum7").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum7 += Number(inputs7[i].value);
+                }
+            }
+            document.getElementById("sum7").value = String(sum7);
+            
+            let sum8 = 0
+            for (let i = 0; i < inputs8.length; i++) {
+                if (isNaN(inputs8[i].value)) {
+                    document.getElementById("sum8").value = "Enter a number";
+                    document.getElementById("total").value = "Enter a number";
+                    return;
+                } else {
+                    sum8 += Number(inputs8[i].value);
+                }
+            }
+            document.getElementById("sum8").value = String(sum8);
+            
+            let total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            
+            document.getElementById("total").value = total;
+        }
+
+        function reset1() {
+            for (let i = 0; i < inputs1.length; i++) {
+                inputs1[i].value = "";
+            }
+            document.getElementById("sum1").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset2() {
+            for (let i = 0; i < inputs2.length; i++) {
+                inputs2[i].value = "";
+            }
+            document.getElementById("sum2").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset3() {
+            for (let i = 0; i < inputs3.length; i++) {
+                inputs3[i].value = "";
+            }
+            document.getElementById("sum3").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset4() {
+            for (let i = 0; i < inputs4.length; i++) {
+                inputs4[i].value = "";
+            }
+            document.getElementById("sum4").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset5() {
+            for (let i = 0; i < inputs5.length; i++) {
+                inputs5[i].value = "";
+            }
+            document.getElementById("sum5").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset6() {
+            for (let i = 0; i < inputs6.length; i++) {
+                inputs6[i].value = "";
+            }
+            document.getElementById("sum6").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset7() {
+            for (let i = 0; i < inputs7.length; i++) {
+                inputs7[i].value = "";
+            }
+            document.getElementById("sum7").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        function reset8() {
+            for (let i = 0; i < inputs8.length; i++) {
+                inputs8[i].value = "";
+            }
+            document.getElementById("sum8").value = 0;
+            total = 0;
+            for (let i = 0; i < results.length; i++) {
+                total += Number(results[i].value);
+            }
+            document.getElementById("total").value = total;
+        }
+
+        var inputs = document.getElementsByClassName("input");
+        function resetAll() {
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+            document.getElementById("sum1").value = 0;
+            document.getElementById("sum2").value = 0;
+            document.getElementById("sum3").value = 0;
+            document.getElementById("sum4").value = 0;
+            document.getElementById("sum5").value = 0;
+            document.getElementById("sum6").value = 0;
+            document.getElementById("sum7").value = 0;
+            document.getElementById("sum8").value = 0;
+            document.getElementById("total").value = 0;
+        }
+        
+    </script>
+</body>
+</html>
